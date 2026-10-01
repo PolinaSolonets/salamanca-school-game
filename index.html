@@ -78,6 +78,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--accent); outline-of
 .feedback .src a{color:var(--ink); font-weight:500}
 .feedback .src::before{content:"📖 "}
 .feedback .more::before{content:"✒️ "}
+.feedback .dict::before{content:"📚 "}
 .mapwrap{margin:.9rem 0 .2rem}
 .mapwrap svg,.maps svg{display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:4px; background:var(--sea)}
 .mapcap{font-size:.88rem; color:var(--muted); margin:.35rem 0 0}
@@ -117,10 +118,10 @@ const MAP = {"pathW":"M521.1,294.7L521.6,298.5L522.4,299.9L522.1,301.4L521.6,302
 const SRC = id => "https://id.salamanca.school/texts/" + id;
 
 const PLACES = {
- salamanca:{de:"Salamanca",en:"Salamanca"}, valladolid:{de:"Valladolid",en:"Valladolid"}, madrid:{de:"Madrid",en:"Madrid"},
- cuenca:{de:"Cuenca",en:"Cuenca"}, sevilla:{de:"Sevilla",en:"Seville"}, evora:{de:"Évora",en:"Évora"}, coimbra:{de:"Coimbra",en:"Coimbra"},
- lyon:{de:"Lyon",en:"Lyon"}, antwerpen:{de:"Antwerpen",en:"Antwerp"}, leiden:{de:"Leiden",en:"Leiden"}, frankfurt:{de:"Frankfurt",en:"Frankfurt"},
- london:{de:"London",en:"London"}, mexico:{de:"Mexiko-Stadt",en:"Mexico City"}, lima:{de:"Lima",en:"Lima"}, manila:{de:"Manila",en:"Manila"}
+ salamanca:{de:"Salamanca",en:"Salamanca",es:"Salamanca"}, valladolid:{de:"Valladolid",en:"Valladolid",es:"Valladolid"}, madrid:{de:"Madrid",en:"Madrid",es:"Madrid"},
+ cuenca:{de:"Cuenca",en:"Cuenca",es:"Cuenca"}, sevilla:{de:"Sevilla",en:"Seville",es:"Sevilla"}, evora:{de:"Évora",en:"Évora",es:"Évora"}, coimbra:{de:"Coimbra",en:"Coimbra",es:"Coímbra"},
+ lyon:{de:"Lyon",en:"Lyon",es:"Lyon"}, antwerpen:{de:"Antwerpen",en:"Antwerp",es:"Amberes"}, leiden:{de:"Leiden",en:"Leiden",es:"Leiden"}, frankfurt:{de:"Frankfurt",en:"Frankfurt",es:"Fráncfort"},
+ london:{de:"London",en:"London",es:"Londres"}, mexico:{de:"Mexiko-Stadt",en:"Mexico City",es:"Ciudad de México"}, lima:{de:"Lima",en:"Lima",es:"Lima"}, manila:{de:"Manila",en:"Manila",es:"Manila"}
 };
 const LABEL_OFFSET = {manila:[-10,-8,"end"], leiden:[10,-4], antwerpen:[10,14], valladolid:[10,-6], salamanca:[-12,-12,"end"], coimbra:[-12,4,"end"], evora:[-12,6,"end"], madrid:[10,-4], cuenca:[10,16], sevilla:[10,12], london:[-12,4,"end"], frankfurt:[10,4], lyon:[10,4]};
 const DUVE = "Thomas Duve, José Luis Egío, Christiane Birr (Hg./eds.), <i>The School of Salamanca: A Case of Global Knowledge Production</i>, Brill 2021 (open access).";
@@ -180,21 +181,21 @@ easy:[
   e:"To argue for the freedom of the seas, Grotius cited Vitoria and Fernando Vázquez de Menchaca, among others. This is how Salamanca arguments became part of the history of international law."}}
 ],
 medium:[
-{place:"salamanca", src:["W0013","Vitoria, Relectiones (Lyon 1557)"], lit:"Anthony Pagden, <i>The Fall of Natural Man</i>, 1982; Martti Koskenniemi, <i>To the Uttermost Parts of the Earth</i>, 2021.",
- de:{q:"In welcher Relectio fragte Vitoria nach der Rechtmäßigkeit der spanischen Herrschaft in Amerika?", o:["De Indis","De legibus","De iustitia et iure","Mare liberum"],
-  e:"In <i>De Indis</i> (vorgetragen Ende der 1530er Jahre) prüfte Vitoria, welche Titel die Herrschaft über die indigenen Völker rechtfertigen könnten, und verwarf viele der damals üblichen Begründungen."},
- en:{q:"In which relectio did Vitoria question the legitimacy of Spanish rule in the Americas?", o:["De Indis","De legibus","De iustitia et iure","Mare liberum"],
-  e:"In <i>De Indis</i> (delivered in the late 1530s), Vitoria examined which titles could justify dominion over Indigenous peoples, and rejected many of the arguments common at the time."}},
+{place:"salamanca", src:["W0013:vol1.5.2.13","Vitoria, De Indis, in: Relectiones (Lyon 1557), pars 1 no. 7"], dict:["L0086","Infidelitas (José Luis Egío García, Andreas Wagner)"],
+ de:{q:"Durften Menschen, die keine Christen waren, nach Ansicht Vitorias und seiner Nachfolger rechtmäßig Eigentum besitzen und herrschen?", o:["Ja, denn Eigentum und Herrschaft beruhen auf dem Naturrecht, nicht auf dem Glauben","Nein, das durften nur Christen","Erst nach ihrer Taufe","Nur mit Erlaubnis des Papstes"],
+  e:"Für Vitoria und die Autoren nach ihm beruhten Eigentum und Herrschaft auf menschlicher Vernunft und Naturrecht, nicht auf Glaube und Gnade. Unglaube allein nahm niemandem seine Güter oder seine Herrschaft, auch nicht den Völkern Amerikas. Ganz konsequent waren sie dabei aber nicht: „Sarazenen“ und Türken galten ihnen als erklärte Feinde der Christenheit, die man bekämpfen, versklaven und berauben dürfe."},
+ en:{q:"According to Vitoria and his successors, could people who were not Christians legitimately own property and rule?", o:["Yes, because property and rule rest on natural law, not on faith","No, only Christians could","Only after baptism","Only with the pope's permission"],
+  e:"For Vitoria and the authors after him, property and rule rested on human reason and natural law, not on faith and grace. Unbelief alone deprived no one of their goods or their rule, including the peoples of the Americas. They were not entirely consistent, however: “Saracens” and Turks were considered sworn enemies of Christianity who could be fought, enslaved and plundered."}},
 {place:"salamanca", src:["W0002","Azpilcueta, Manual de confessores (Salamanca 1556)"], lit:"Marjorie Grice-Hutchinson, <i>The School of Salamanca: Readings in Spanish Monetary Theory, 1544–1605</i>, 1952.",
  de:{q:"Wer brachte 1556 steigende Preise mit dem Überfluss an Geld, etwa Silber aus Amerika, in Verbindung?", o:["Martín de Azpilcueta","Francisco de Vitoria","Melchor Cano","Francisco Suárez"],
   e:"Martín de Azpilcueta, genannt Doctor Navarrus, beschrieb im <i>Comentario resolutorio de cambios</i> (1556), dass Geld dort weniger wert ist, wo es reichlich vorhanden ist. Das gilt als frühe Form der Quantitätstheorie."},
  en:{q:"Who linked rising prices to an abundance of money, such as silver from the Americas, in 1556?", o:["Martín de Azpilcueta","Francisco de Vitoria","Melchor Cano","Francisco Suárez"],
   e:"Martín de Azpilcueta, known as Doctor Navarrus, observed in his <i>Comentario resolutorio de cambios</i> (1556) that money is worth less where it is plentiful. This is seen as an early form of the quantity theory of money."}},
-{place:"salamanca", src:["W0011","Soto, De iustitia et iure (Salamanca 1553)"], lit:"Wim Decock, <i>Theologians and Contract Law</i>, 2013.",
- de:{q:"Welchen Titel trugen große Werke von Domingo de Soto und Luis de Molina gleichermaßen?", o:["De iustitia et iure","De iure belli ac pacis","Summa theologiae","Leviathan"],
-  e:"<i>De iustitia et iure</i> wurde zu einer eigenen Gattung: Theologen behandelten darin Eigentum, Verträge, Preise und Restitution."},
- en:{q:"Which title did major works by Domingo de Soto and Luis de Molina share?", o:["De iustitia et iure","De iure belli ac pacis","Summa theologiae","Leviathan"],
-  e:"<i>De iustitia et iure</i> became a genre of its own: theologians used it to treat property, contracts, prices and restitution."}},
+{place:"salamanca", src:["W0011:1.1.7.3.3","Soto, De iustitia et iure (Salamanca 1553), lib. 1 q. 6 art. 3"], dict:["L0072","Fornicatio (Christiane Birr)"],
+ de:{q:"Für die Theologen waren Beziehungen zwischen Unverheirateten eine Todsünde. Warum bestrafte das weltliche Recht sie trotzdem nicht?", o:["Um Schlimmeres zu verhindern: Von zwei Übeln wählt man das kleinere","Weil die Kirche sie stattdessen bestrafte","Weil man sie ohnehin nicht beweisen konnte","Weil der König die Strafe abgeschafft hatte"],
+  e:"Nicht jede Sünde ist auch ein Verbrechen. Laut Soto verbot das menschliche Recht nur schwerere Formen wie den Ehebruch. Mercado und Albornoz erklärten, das Gemeinwesen dulde das Geringere, um größere Übel zu vermeiden: Von zwei unvermeidlichen Übeln muss man das kleinere wählen. Das Verhältnis von Recht und Moral war eines der großen Themen der Schule."},
+ en:{q:"For the theologians, relations between unmarried people were a mortal sin. Why did secular law nevertheless not punish them?", o:["To prevent worse evils: of two evils, choose the lesser","Because the Church punished them instead","Because they could hardly be proven anyway","Because the king had abolished the penalty"],
+  e:"Not every sin is a crime. According to Soto, human law only prohibited more serious forms such as adultery. Mercado and Albornoz explained that the commonwealth tolerated the lesser wrong to avoid greater evils: of two inevitable evils, the lesser must be chosen. The relationship between law and morality was one of the School's great themes."}},
 {place:"evora", src:["W0008","Molina, De iustitia et iure (Cuenca/Antwerpen)"], lit:"Matthias Kaufmann, Alexander Aichele (Hg./eds.), <i>A Companion to Luis de Molina</i>, Brill 2014.",
  de:{q:"An welcher Universität lehrte Luis de Molina über viele Jahre?", o:["Évora","Salamanca","Mexiko-Stadt","Rom"],
   e:"Molina verbrachte fast seine gesamte Lehrtätigkeit in Portugal, vor allem in Évora. Die Schule von Salamanca war nie nur an einen Ort gebunden."},
@@ -205,11 +206,11 @@ medium:[
   e:"<i>De legibus ac Deo legislatore</i> ist eine umfassende Theorie des Gesetzes, vom ewigen und natürlichen Gesetz bis zum menschlichen Recht, und wurde in ganz Europa gelesen."},
  en:{q:"Which major work on law did Francisco Suárez publish in Coimbra in 1612?", o:["De legibus ac Deo legislatore","De Indis","Mare liberum","Manual de confesores y penitentes"],
   e:"<i>De legibus ac Deo legislatore</i> is a comprehensive theory of law, from eternal and natural law to human law, and was read across Europe."}},
-{place:"salamanca", src:["W0002","Azpilcueta, Manual de confessores (Salamanca 1556)"], lit:"Thomas Duve, Otto Danwerth (Hg./eds.), <i>Knowledge of the Pragmatici</i>, Brill 2020 (open access).",
- de:{q:"Eines der meistgedruckten Werke eines Salmantiner Autors war …", o:["ein Handbuch für Beichtväter","ein Ritterroman","eine Weltkarte","ein Kochbuch"],
-  e:"Azpilcuetas <i>Manual de confesores y penitentes</i> erschien in zahlreichen Auflagen und Übersetzungen. Über solche praktischen Bücher verbreitete sich normatives Wissen weit über die Universität hinaus."},
- en:{q:"One of the most frequently printed works by a Salamanca author was …", o:["a manual for confessors","a chivalric romance","a world map","a cookbook"],
-  e:"Azpilcueta's <i>Manual de confesores y penitentes</i> went through many editions and translations. Practical books like this carried normative knowledge far beyond the university."}},
+{place:"salamanca", src:["W0002:19.1.number9","Azpilcueta, Manual de confessores (Salamanca 1556), cap. 19 no. 9"], dict:["L0007","Alea (Christiane Birr)"],
+ de:{q:"Wie viel ihres Monatsgeldes durften Studenten laut Azpilcueta und Soto beim Glücksspiel einsetzen?", o:["Etwa 4–5 %","Gar nichts","Die Hälfte","So viel sie wollten"],
+  e:"Spielen um Geld galt unter jungen Männern aus guter Familie als Ehrensache. Azpilcueta und Soto erlaubten Studenten deshalb, etwa 4–5 % ihres monatlichen Unterhalts zu verspielen. Juan de Salas ging noch weiter: Das gelte sogar, wenn der Vater es ausdrücklich verboten habe, denn das Naturrecht erlaube alles, was ein ehrenhaftes Leben erfordert."},
+ en:{q:"According to Azpilcueta and Soto, how much of their monthly allowance could students stake on games of chance?", o:["About 4–5 %","Nothing at all","Half of it","As much as they liked"],
+  e:"Gambling was a point of honour among young men from good families. Azpilcueta and Soto therefore allowed students to gamble away about 4–5 % of their monthly allowance. Juan de Salas went even further: this held even if their father had explicitly forbidden it, since natural law allows whatever an honourable life requires."}},
 {place:"madrid", lit:"Thomas Duve, „The School of Salamanca: A Case of Global Knowledge Production“, in: Duve, Egío, Birr (Hg./eds.), Brill 2021.",
  de:{q:"Wann wurde der Begriff „Schule von Salamanca“ geprägt?", o:["Im späten 19. Jahrhundert","Im 16. Jahrhundert, von Vitorias Schülern","Im 17. Jahrhundert, von Francisco Suárez","In den 1950er Jahren, von Wirtschaftshistorikern"],
   e:"Vitorias Schüler verstanden sich zwar schon als seine Schüler, doch der Begriff selbst entstand erst im späten 19. Jahrhundert. Damals wurde die Schule als wichtiger Moment des europäischen Rechts- und Staatsdenkens neu entdeckt, mit Vitoria als Hauptfigur und dem Völkerrecht als bekanntestem Thema. Dahinter stand der Wunsch, Spaniens Beitrag zur europäischen Wissenschaft sichtbar zu machen, etwa in Eduardo de Hinojosas Vortrag über Vitoria an der Real Academia de la Historia in Madrid (1889)."},
@@ -252,11 +253,11 @@ hard:[
   e:"Juan de Solórzano Pereira verband Lehre in Salamanca und Praxis in Lima. Seine <i>Política indiana</i> (1648) wurde zu einem Standardwerk des Rechts der spanischen Überseegebiete."},
  en:{q:"Which jurist, a Salamanca professor and later judge (oidor) in Lima, wrote the <i>Política indiana</i>?", o:["Juan de Solórzano Pereira","Diego de Avendaño","Gregorio López","Martín de Azpilcueta"],
   e:"Juan de Solórzano Pereira combined teaching in Salamanca with practice in Lima. His <i>Política indiana</i> (1648) became a standard work on the law of Spain's overseas territories."}},
-{place:"madrid", src:["W0063","Gregorio López, Siete Partidas (Salamanca 1555)"],
- de:{q:"Viele kastilische Bücher beginnen mit einer „tasa“. Was legte sie fest?", o:["Den amtlichen Höchstpreis, berechnet pro Druckbogen","Das königliche Druckprivileg","Die Druckerlaubnis des Zensors","Die Widmung an einen Gönner"],
-  e:"Die tasa setzte den Verkaufspreis fest, meist pro Bogen (pliego). Privileg, Zensurgutachten und Widmung standen oft daneben in den Vorstücken: Sie verraten viel über die Wege eines Buches."},
- en:{q:"Many Castilian books open with a “tasa”. What did it set?", o:["The official maximum price, calculated per printed sheet","The royal printing privilege","The censor's licence to print","The dedication to a patron"],
-  e:"The tasa fixed the sale price, usually per sheet (pliego). Privilege, censor's approval and dedication often sat alongside it in the preliminaries: together they tell us a lot about a book's journey."}},
+{place:"mexico", dict:["L0086","Infidelitas (José Luis Egío García, Andreas Wagner)"],
+ de:{q:"Wie hoch sollten die Steuern der indigenen Bevölkerung unter spanischer Herrschaft sein? Was schlug Alonso de la Vera Cruz in Mexiko vor?", o:["Immer niedriger als unter ihren früheren Herrschern","Höher, solange sie nicht getauft waren","Genauso hoch wie die Steuern in Kastilien","Gar keine Steuern, solange die Mission andauerte"],
+  e:"Steuern waren auch eine Glaubensfrage. Manche Autoren, etwa José de Acosta, wollten Nichtchristen, die sich der Bekehrung verweigerten, mit hohen Steuern belegen. Die meisten lehnten das ab: Übermäßige Lasten widersprächen christlicher Großmut und seien eine versteckte Zwangsbekehrung. Vera Cruz ging am weitesten: Unter einem christlichen Herrscher sollten die Steuern immer niedriger sein als unter den früheren, nichtchristlichen Herrschern."},
+ en:{q:"How high should the taxes of Indigenous people under Spanish rule be? What did Alonso de la Vera Cruz propose in Mexico?", o:["Always lower than under their previous rulers","Higher, as long as they were not baptised","As high as taxes in Castile","No taxes at all while the mission lasted"],
+  e:"Taxes were also a question of faith. Some authors, such as José de Acosta, wanted to impose high taxes on non-Christians who refused conversion. Most rejected this: excessive burdens contradicted Christian magnanimity and amounted to a covert forced conversion. Vera Cruz went furthest: under a Christian ruler, taxes should always be lower than under the previous non-Christian rulers."}},
 {place:"salamanca", src:["W0002","Azpilcueta, Manual de confessores (Salamanca 1556)"], lit:"Manuela Bragagnolo, „Legal Authorship in the Age of the Printing Press: <i>Manual de Confessores</i> by Martín de Azpilcueta (1492–1586)“, in: dies./ead. (Hg./ed.), <i>The Production of Knowledge of Normativity in the Age of the Printing Press</i>, Brill 2024.",
  de:{q:"Ein Bestseller, ein Raubdruck und ein Prozess: Welcher Autor musste vor den königlichen Gerichten verteidigen, dass sein Buch wirklich sein eigenes Werk war?", o:["Martín de Azpilcueta","Francisco de Vitoria","Domingo de Soto","Luis de Molina"],
   e:"Als Drucker eine nicht autorisierte Ausgabe seines spanischen <i>Manual de confesores</i> herausbrachten, zog Azpilcueta vor Gericht. Die Drucker bestritten, dass er der eigentliche Autor sei; davon hing aber sein königliches Druckprivileg ab. Azpilcueta begründete seine Autorschaft ausführlich und behielt das Privileg. Der Fall ist eine der seltenen Quellen dazu, wie frühneuzeitliche Autorschaft im Recht verhandelt wurde."},
@@ -272,11 +273,11 @@ hard:[
   e:"Die erste Ausgabe erschien 1557 in Lyon, elf Jahre nach Vitorias Tod, mit einem Privileg des französischen Königs. Ein Salmantiner Klassiker kam also zuerst aus Frankreich."},
  en:{q:"Vitoria never published his relectiones himself. Where were they first printed in 1557?", o:["Lyon","Salamanca","Rome","Venice"],
   e:"The first edition appeared in Lyon in 1557, eleven years after Vitoria's death, with a privilege from the French king. A Salamanca classic first came from France."}},
-{place:"valladolid", src:["W0046","Freitas, De iusto imperio Lusitanorum Asiatico (Valladolid 1625)"], lit:"Martti Koskenniemi, <i>To the Uttermost Parts of the Earth</i>, 2021.",
- de:{q:"Wer antwortete 1625 mit <i>De iusto imperio Lusitanorum Asiatico</i> auf Grotius’ <i>Mare liberum</i>?", o:["Serafim de Freitas","Fernando Vázquez de Menchaca","Juan de Solórzano Pereira","Francisco Suárez"],
-  e:"Der portugiesische Mercedarier Serafim de Freitas, Professor in Valladolid, verteidigte die portugiesischen Ansprüche in Asien gegen Grotius. Die Debatte über die Meere war ein globaler Streit."},
- en:{q:"Who answered Grotius's <i>Mare liberum</i> in 1625 with <i>De iusto imperio Lusitanorum Asiatico</i>?", o:["Serafim de Freitas","Fernando Vázquez de Menchaca","Juan de Solórzano Pereira","Francisco Suárez"],
-  e:"The Portuguese Mercedarian Serafim de Freitas, a professor at Valladolid, defended Portugal's claims in Asia against Grotius. The debate over the seas was a global dispute."}},
+{place:"salamanca", src:["W0013:vol1.5.2.34","Vitoria, De Indis, in: Relectiones (Lyon 1557), pars 1 no. 33"], dict:["L0086","Infidelitas (José Luis Egío García, Andreas Wagner)"],
+ de:{q:"Melchor Cano wurde Vitorias Nachfolger auf dem Lehrstuhl in Salamanca. Wofür nutzte er 1547 seine erste öffentliche Vorlesung?", o:["Er widerlegte eine Lehrmeinung seines kurz zuvor verstorbenen Vorgängers","Er hielt eine Gedenkrede auf Vitoria","Er verteidigte Vitoria gegen Kritiker aus Rom","Er stellte eine neue Ausgabe von Vitorias Werken vor"],
+  e:"Vitoria hatte erwogen, dass Menschen, die ohne eigene Schuld nie vom Christentum gehört hatten, dennoch echte Reue empfinden und Gnade empfangen könnten. Das spaltete seine Kollegen. Cano widerlegte genau diese Ansicht in seiner ersten Vorlesung, und auch Soto, der Vitoria zunächst gefolgt war, rückte später davon ab. Die Schule von Salamanca sprach also keineswegs mit einer Stimme."},
+ en:{q:"Melchor Cano succeeded Vitoria in his chair at Salamanca. What did he use his first public lecture for in 1547?", o:["To refute an opinion of his recently deceased predecessor","To deliver a memorial speech for Vitoria","To defend Vitoria against critics in Rome","To present a new edition of Vitoria's works"],
+  e:"Vitoria had speculated that people who, through no fault of their own, had never heard of Christianity might still be capable of true contrition and of receiving grace. This divided his colleagues. Cano refuted precisely this view in his first lecture, and Soto, who had initially followed Vitoria, later backed down as well. The School of Salamanca by no means spoke with one voice."}},
 {place:"frankfurt", src:["W0006","Covarrubias, Opera omnia (Frankfurt 1573)"],
  de:{q:"Die Werke von Diego de Covarrubias und Fernando Vázquez de Menchaca liegen in der digitalen Sammlung in Ausgaben aus welcher Stadt vor?", o:["Frankfurt am Main","Lyon","Venedig","Paris"],
   e:"Beide Ausgaben stammen aus Frankfurt, das mit seiner Buchmesse ein Knotenpunkt des europäischen Buchhandels war. Salmantiner Recht wurde also auch mitten in Deutschland gedruckt und verkauft."},
@@ -284,16 +285,91 @@ hard:[
   e:"Both editions come from Frankfurt, whose book fair made it a hub of the European book trade. Salamanca law was printed and sold in the heart of Germany too."}}
 ]};
 
+const ES = {
+easy:[
+{q:"La Universidad de Salamanca es una de las más antiguas de Europa. ¿Cuándo se fundó?", o:["1218","1492","1618","1789"],
+ e:"La universidad se fundó en 1218. En el siglo XVI era una de las principales universidades de Europa y atraía a estudiantes de toda España, de Portugal y pronto también de América."},
+{q:"¿Quién es considerado el fundador de la Escuela de Salamanca?", o:["Francisco de Vitoria","Cristóbal Colón","Francisco Suárez","Miguel de Cervantes"],
+ e:"Francisco de Vitoria obtuvo la cátedra de Prima de Teología en Salamanca en 1526. Sus lecciones formaron a toda una generación de estudiantes."},
+{q:"¿Quiénes formaban principalmente la Escuela de Salamanca?", o:["Teólogos y juristas","Pintores y arquitectos","Astrónomos","Poetas y dramaturgos"],
+ e:"Los autores eran sobre todo teólogos y juristas. Se preguntaban qué es lo justo: en la política, el comercio, la guerra y la vida cotidiana."},
+{q:"¿En qué lengua escribían sobre todo sus obras académicas?", o:["En latín","En alemán","En francés","En árabe"],
+ e:"El latín era la lengua de los sabios en toda Europa. Algunas obras, como los manuales para confesores o mercaderes, se publicaron también en castellano para que más personas pudieran leerlas."},
+{q:"¿La conquista de qué región planteó las grandes preguntas nuevas para la Escuela?", o:["América","Australia","La Antártida","Siberia"],
+ e:"La conquista española de América planteó preguntas urgentes: ¿pueden los españoles gobernar allí? ¿Qué derechos tienen los pueblos indígenas? Vitoria y sus discípulos lo debatieron abiertamente."},
+{q:"¿Quién se enfrentó a Juan Ginés de Sepúlveda en Valladolid en 1550–51?", o:["Bartolomé de las Casas","Francisco de Vitoria","Hugo Grocio","Luis de Molina"],
+ e:"Las Casas rebatió la justificación de Sepúlveda para someter a los pueblos indígenas. Vitoria ya había muerto (1546)."},
+{q:"Vitoria y Domingo de Soto pertenecían a la misma orden. ¿A cuál?", o:["A los dominicos","A los benedictinos","A los templarios","A los cartujos"],
+ e:"Ambos eran dominicos y vivían en el convento de San Esteban de Salamanca. Más tarde, jesuitas como Molina y Suárez se convirtieron en autores centrales."},
+{q:"¿Sobre qué cuestión cotidiana les gustaba especialmente debatir?", o:["Qué es un precio justo","Cómo construir barcos","Qué pan sabe mejor","Cómo predecir el tiempo"],
+ e:"¿Puede un mercader cobrar más tras una mala cosecha? ¿Está permitido el interés? Confesores y mercaderes necesitaban respuestas, y los sabios se las daban."},
+{q:"¿Cómo viajaron las ideas de la Escuela por el mundo?", o:["En libros impresos","Por telégrafo","Por la radio","Con palomas mensajeras"],
+ e:"Las obras de Salamanca se reimprimieron en ciudades como Lyon, Amberes y Fráncfort y viajaron en barco hasta México, Lima y Manila."},
+{q:"¿Qué jurista neerlandés se apoyó en autores salmantinos en su <i>Mare liberum</i> (1609)?", o:["Hugo Grocio","Rembrandt van Rijn","Erasmo de Róterdam","Baruch Spinoza"],
+ e:"Para defender la libertad de los mares, Grocio citó, entre otros, a Vitoria y a Fernando Vázquez de Menchaca. Así, los argumentos salmantinos pasaron a formar parte de la historia del derecho internacional."}
+],
+medium:[
+{q:"Según Vitoria y sus sucesores, ¿podían quienes no eran cristianos poseer bienes y gobernar legítimamente?", o:["Sí, porque la propiedad y el poder se fundan en el derecho natural, no en la fe","No, solo los cristianos podían","Solo después de bautizarse","Solo con permiso del papa"],
+ e:"Para Vitoria y los autores posteriores, la propiedad y el poder se basaban en la razón humana y el derecho natural, no en la fe ni en la gracia. La infidelidad por sí sola no privaba a nadie de sus bienes ni de su señorío, tampoco a los pueblos de América. Sin embargo, no fueron del todo coherentes: a los «sarracenos» y a los turcos los consideraban enemigos declarados de la cristiandad, a quienes se podía combatir, esclavizar y despojar."},
+{q:"¿Quién relacionó en 1556 la subida de los precios con la abundancia de dinero, como la plata americana?", o:["Martín de Azpilcueta","Francisco de Vitoria","Melchor Cano","Francisco Suárez"],
+ e:"Martín de Azpilcueta, llamado el Doctor Navarro, observó en su <i>Comentario resolutorio de cambios</i> (1556) que el dinero vale menos donde abunda. Se considera una forma temprana de la teoría cuantitativa del dinero."},
+{q:"Para los teólogos, las relaciones entre personas no casadas eran pecado mortal. ¿Por qué, entonces, no las castigaba el derecho secular?", o:["Para evitar males mayores: de dos males, se elige el menor","Porque las castigaba la Iglesia","Porque de todos modos apenas podían probarse","Porque el rey había abolido la pena"],
+ e:"No todo pecado es un delito. Según Soto, la ley humana solo prohibía formas más graves, como el adulterio. Mercado y Albornoz explicaban que la república toleraba el mal menor para evitar males mayores: de dos males inevitables, debe elegirse el menor. La relación entre derecho y moral fue uno de los grandes temas de la Escuela."},
+{q:"¿En qué universidad enseñó Luis de Molina durante muchos años?", o:["Évora","Salamanca","Ciudad de México","Roma"],
+ e:"Molina pasó casi toda su carrera docente en Portugal, sobre todo en Évora. La Escuela de Salamanca nunca estuvo ligada a un solo lugar."},
+{q:"¿Qué gran obra sobre la ley publicó Francisco Suárez en Coímbra en 1612?", o:["De legibus ac Deo legislatore","De Indis","Mare liberum","Manual de confesores y penitentes"],
+ e:"<i>De legibus ac Deo legislatore</i> es una teoría completa de la ley, desde la ley eterna y la natural hasta la ley humana, y se leyó en toda Europa."},
+{q:"Según Azpilcueta y Soto, ¿qué parte de su asignación mensual podían apostar los estudiantes en juegos de azar?", o:["Alrededor del 4–5 %","Nada en absoluto","La mitad","Todo lo que quisieran"],
+ e:"El juego era cuestión de honra entre los jóvenes de buena familia. Por eso Azpilcueta y Soto permitían a los estudiantes jugarse alrededor del 4–5 % de su asignación mensual. Juan de Salas fue aún más lejos: valía incluso si el padre lo había prohibido expresamente, pues el derecho natural permite todo lo que exige una vida honrosa."},
+{q:"¿Cuándo se acuñó el término «Escuela de Salamanca»?", o:["A finales del siglo XIX","En el siglo XVI, por los discípulos de Vitoria","En el siglo XVII, por Francisco Suárez","En los años cincuenta del siglo XX, por historiadores de la economía"],
+ e:"Los discípulos de Vitoria ya se veían como tales, pero el término mismo no se acuñó hasta finales del siglo XIX. Entonces la Escuela fue redescubierta como un momento importante del pensamiento político y jurídico europeo, con Vitoria como figura central y el derecho internacional como su tema más conocido. Detrás estaba el deseo de hacer visible la contribución de España a la ciencia europea, como en el discurso de Eduardo de Hinojosa sobre Vitoria en la Real Academia de la Historia de Madrid (1889)."},
+{q:"¿Quién imprimió en Salamanca en 1555 las <i>Siete Partidas</i> glosadas por Gregorio López?", o:["Andrea de Portonariis","Aldo Manucio","Cristóbal Plantino","Johannes Gutenberg"],
+ e:"Andrea de Portonariis (Andrés de Portonaris) procedía de una familia italiana de impresores y fue uno de los impresores más importantes de Salamanca. También imprimió el <i>De iustitia et iure</i> de Soto (1553)."},
+{q:"¿Dónde se publicó en 1593 el primer tomo del <i>De iustitia et iure</i> de Molina?", o:["Cuenca","Salamanca","Roma","París"],
+ e:"El primer tomo apareció en Cuenca en 1593, impreso por Juan Masselin. Los tomos posteriores se imprimieron en Amberes: una obra, dos lugares de impresión, dos mercados del libro."},
+{q:"¿Qué dos universidades se fundaron en América en 1551?", o:["México y Lima","Harvard y Yale","Buenos Aires y Santiago","La Habana y Bogotá"],
+ e:"En 1551 se fundaron las universidades de México y Lima, según el modelo de Salamanca. Allí se enseñó, adaptó y desarrolló el saber de la Escuela, y pronto también se imprimieron obras en México."}
+],
+hard:[
+{q:"¿Qué discípulo de Vitoria enseñó en la Universidad de México a partir de la década de 1550?", o:["Alonso de la Vera Cruz","Domingo de Soto","Luis de Molina","Juan de Solórzano Pereira"],
+ e:"El agustino Alonso de la Vera Cruz había estudiado en Salamanca y pronunció en México sus propias relecciones sobre el dominio y la guerra justa. La Escuela se siguió desarrollando en la propia América."},
+{q:"Un jesuita de Lima escribió un manual en varios tomos sobre cuestiones de conciencia en los territorios españoles de ultramar, el <i>Thesaurus Indicus</i>. Se imprimió en Amberes. ¿Quién fue el autor?", o:["Diego de Avendaño","José de Acosta","Juan de Solórzano Pereira","Alonso de la Vera Cruz"],
+ e:"Diego de Avendaño vivió y enseñó durante décadas en Lima. Su <i>Thesaurus Indicus</i> apareció en Amberes a partir de 1668: un saber producido en América se imprimía en Europa y desde allí volvía a recorrer el mundo."},
+{q:"¿Qué dominico formado en Salamanca se convirtió en el primer obispo de Manila?", o:["Domingo de Salazar","Francisco Javier","Alonso de la Vera Cruz","José de Acosta"],
+ e:"Domingo de Salazar llevó a Filipinas los debates salmantinos sobre el gobierno justo y defendió allí los derechos de la población local."},
+{q:"¿Qué jurista, catedrático en Salamanca y después oidor en Lima, escribió la <i>Política indiana</i>?", o:["Juan de Solórzano Pereira","Diego de Avendaño","Gregorio López","Martín de Azpilcueta"],
+ e:"Juan de Solórzano Pereira unió la docencia en Salamanca con la práctica en Lima. Su <i>Política indiana</i> (1648) se convirtió en una obra de referencia del derecho de los territorios españoles de ultramar."},
+{q:"¿Cuántos impuestos debía pagar la población indígena bajo dominio español? ¿Qué propuso Alonso de la Vera Cruz en México?", o:["Siempre menos que bajo sus señores anteriores","Más, mientras no estuvieran bautizados","Lo mismo que en Castilla","Ningún impuesto mientras durara la misión"],
+ e:"Los impuestos también eran una cuestión de fe. Algunos autores, como José de Acosta, querían gravar con impuestos altos a los no cristianos que rechazaban la conversión. La mayoría lo rechazó: las cargas excesivas contradecían la magnanimidad cristiana y equivalían a una conversión forzosa encubierta. Vera Cruz fue el más lejos: bajo un gobernante cristiano, los impuestos debían ser siempre menores que bajo los anteriores señores no cristianos."},
+{q:"Un éxito editorial, una edición pirata y un pleito: ¿qué autor tuvo que defender ante los tribunales reales que su libro era realmente obra suya?", o:["Martín de Azpilcueta","Francisco de Vitoria","Domingo de Soto","Luis de Molina"],
+ e:"Cuando unos impresores sacaron una edición no autorizada de su <i>Manual de confesores</i> en castellano, Azpilcueta acudió a los tribunales. Los impresores negaban que él fuera realmente su autor, y de ello dependía su privilegio real de impresión. Azpilcueta defendió su autoría con detalle y conservó el privilegio. El caso es una de las pocas fuentes sobre cómo se negociaba jurídicamente la autoría en la Edad Moderna."},
+{q:"¿Qué dominico, que había tomado el hábito en México, escribió un manual sobre los contratos comerciales para los mercaderes de Sevilla?", o:["Tomás de Mercado","Luis de Alcalá","Cristóbal de Villalón","Juan de Medina"],
+ e:"Tomás de Mercado conocía de primera mano el comercio atlántico. Su <i>Suma de tratos y contratos</i> explicaba a los mercaderes, en castellano, qué negocios eran justos."},
+{q:"Vitoria nunca publicó él mismo sus relecciones. ¿Dónde se imprimieron por primera vez en 1557?", o:["Lyon","Salamanca","Roma","Venecia"],
+ e:"La primera edición apareció en Lyon en 1557, once años después de la muerte de Vitoria, con privilegio del rey de Francia. Un clásico salmantino salió primero de Francia."},
+{q:"Melchor Cano sucedió a Vitoria en su cátedra de Salamanca. ¿Para qué usó su primera lección pública en 1547?", o:["Para refutar una opinión de su predecesor, recién fallecido","Para pronunciar un discurso en memoria de Vitoria","Para defender a Vitoria frente a críticos de Roma","Para presentar una nueva edición de las obras de Vitoria"],
+ e:"Vitoria había planteado que quienes, sin culpa propia, nunca habían oído hablar del cristianismo podían ser capaces de verdadera contrición y de recibir la gracia. Esto dividió a sus colegas. Cano refutó precisamente esa opinión en su primera lección, y también Soto, que al principio había seguido a Vitoria, se retractó después. La Escuela de Salamanca no hablaba, ni mucho menos, con una sola voz."},
+{q:"Las obras de Diego de Covarrubias y Fernando Vázquez de Menchaca figuran en la colección digital en ediciones de ¿qué ciudad?", o:["Fráncfort del Meno","Lyon","Venecia","París"],
+ e:"Ambas ediciones proceden de Fráncfort, cuya feria del libro la convirtió en un centro del comercio librero europeo. El derecho salmantino también se imprimía y vendía en el corazón de Alemania."}
+]};
+
+for(const k in LEVELS) LEVELS[k].forEach((q,i)=>{ q.es=ES[k][i]; });
+
 const RESULTS = [
  {min:10, de:["Catedrático de Prima!","Zehn von zehn. Du hast die Bücher offenbar von vorne bis hinten gelesen, samt Register und Errata."],
+          es:["¡Catedrático de Prima!","Diez de diez. Seguro que has leído los libros de principio a fin, índice y fe de erratas incluidos."],
           en:["Holder of the Prima chair!","Ten out of ten. You must have read the books from cover to cover, index and errata included."]},
  {min:8,  de:["Du bist ein Profi","Vitoria würde dich sofort in seine Vorlesung setzen, und zwar in die erste Reihe."],
+          es:["Eres un experto","Vitoria te sentaría de inmediato en su clase. En primera fila."],
           en:["You are a pro","Vitoria would seat you in his lecture right away. Front row."]},
  {min:6,  de:["Fortgeschrittene Studienzeit","Solide! Ein paar Relectiones mehr, und der Lehrstuhl ist in Reichweite."],
+          es:["Estudiante avanzado","¡Sólido! Unas cuantas relecciones más y la cátedra estará a tu alcance."],
           en:["Advanced student","Solid! A few more relectiones and a chair is within reach."]},
  {min:3,  de:["Erstes Semester","Du weißt, wo die Universität steht. Jetzt wartet die Bibliothek auf dich."],
+          es:["Primer curso","Ya sabes dónde está la universidad. Ahora te espera la biblioteca."],
           en:["First semester","You know where the university is. Now the library awaits."]},
  {min:0,  de:["Noch vor den Stadttoren","Die gute Nachricht: Die ganze Bibliothek ist online, und niemand verlangt eine tasa."],
+          es:["Todavía a las puertas de la ciudad","La buena noticia: toda la biblioteca está en línea y nadie cobra tasa."],
           en:["Still outside the city gates","Good news: the whole library is online, and no one charges a tasa."]}
 ];
 
@@ -303,7 +379,7 @@ const UI = {
      intro2:"Nach jeder Antwort erfährst du mehr, siehst den Ort auf der Karte und kannst die Quelle im Original lesen.",
      choose:"Wähle deine Stufe",
      lv:{easy:["Einsteiger","Für alle, die neugierig sind"],medium:["Fortgeschritten","Für alle, die schon einmal von Vitoria gehört haben"],hard:["Profi","Für alle, die Molina im Original lesen"]},
-     of:"von", q:"Quaestio", ok:"Richtig.", no:"Nicht ganz. Richtig wäre:", read:"Zum Weiterlesen:", src:"Im Original lesen:", more:"Mehr über die spannende Druckgeschichte von Molinas Werk im Blog Legal History Insights",
+     of:"von", q:"Quaestio", ok:"Richtig.", no:"Nicht ganz. Richtig wäre:", read:"Zum Weiterlesen:", src:"Im Original lesen:", dict:"Mehr im Wörterbuch der Schule von Salamanca:", more:"Mehr über die spannende Druckgeschichte von Molinas Werk im Blog Legal History Insights",
      next:"Nächste Frage", finish:"Ergebnis ansehen", again:"Noch einmal spielen", other:"Andere Stufe wählen", visit:"Zur digitalen Sammlung",
      share:"Ergebnis teilen", copied:"Text mit Link kopiert.", level:"Stufe",
      net:"Die Schule von Salamanca als globales Netzwerk", netp:"Die Schule war nie nur ein Ort. Ihr Wissen wurde zwischen Europa, Amerika und Asien gelehrt, gedruckt, gelesen und weiterentwickelt. Die Karte zeigt alle Orte aus dem Quiz; hervorgehoben sind die Orte deiner Runde.",
@@ -311,12 +387,25 @@ const UI = {
      europe:"Ausschnitt Europa",
      shareText:(s,l,t)=>`Ich habe ${s}/10 im Salamanca-Quiz (Stufe ${l}) geschafft: ${t}! Wie gut kennst du die Schule von Salamanca?`,
      foot:'Die Quellen selbst lesen: <a href="https://www.salamanca.school" target="_blank" rel="noopener">salamanca.school</a>'},
+ es:{brand:"Escuela de Salamanca", title:"¿Cuánto sabes de la Escuela de Salamanca?",
+     intro:"Diez preguntas sobre teólogos y juristas que en los siglos XVI y XVII reflexionaron sobre el derecho, el comercio, el poder y la conciencia, de Salamanca a Lima y Manila.",
+     intro2:"Después de cada respuesta aprenderás algo más, verás el lugar en el mapa y podrás leer la fuente original.",
+     choose:"Elige tu nivel",
+     lv:{easy:["Principiante","Para curiosos"],medium:["Avanzado","Para quienes ya han oído hablar de Vitoria"],hard:["Experto","Para quienes leen a Molina en el original"]},
+     of:"de", q:"Quaestio", ok:"¡Correcto!", no:"No del todo. La respuesta es:", read:"Para seguir leyendo:", src:"Leer el original:", dict:"Más en el Diccionario de la Escuela de Salamanca:", more:"Más sobre la apasionante historia editorial de la obra de Molina en el blog Legal History Insights",
+     next:"Siguiente pregunta", finish:"Ver resultado", again:"Jugar otra vez", other:"Elegir otro nivel", visit:"Ir a la colección digital",
+     share:"Compartir mi resultado", copied:"Texto y enlace copiados.", level:"Nivel",
+     net:"La Escuela de Salamanca como red global", netp:"La Escuela nunca fue un solo lugar. Su saber se enseñó, imprimió, leyó y desarrolló entre Europa, América y Asia. El mapa muestra todos los lugares del cuestionario; los de tu ronda aparecen destacados.",
+     lgOk:"Respondido correctamente en tu ronda", lgNo:"Por descubrir en tu ronda", lgOther:"Otros lugares de la red",
+     europe:"Detalle de Europa",
+     shareText:(s,l,t)=>`He conseguido ${s}/10 en el cuestionario de Salamanca (nivel ${l}): ${t} ¿Cuánto sabes de la Escuela de Salamanca?`,
+     foot:'Lee tú mismo las fuentes: <a href="https://www.salamanca.school" target="_blank" rel="noopener">salamanca.school</a>'},
  en:{brand:"School of Salamanca", title:"How well do you know the School of Salamanca?",
      intro:"Ten questions about theologians and jurists who reflected on law, trade, power and conscience in the sixteenth and seventeenth centuries, from Salamanca to Lima and Manila.",
      intro2:"After each answer you learn more, see the place on the map and can read the source in the original.",
      choose:"Choose your level",
      lv:{easy:["Beginner","For the curious"],medium:["Intermediate","For those who have heard of Vitoria"],hard:["Expert","For those who read Molina in the original"]},
-     of:"of", q:"Quaestio", ok:"Correct.", no:"Not quite. The answer is:", read:"Further reading:", src:"Read the original:", more:"Learn more about the fascinating publication history of Molina's book on Legal History Insights",
+     of:"of", q:"Quaestio", ok:"Correct.", no:"Not quite. The answer is:", read:"Further reading:", src:"Read the original:", dict:"Read more in the Dictionary of the School of Salamanca:", more:"Learn more about the fascinating publication history of Molina's book on Legal History Insights",
      next:"Next question", finish:"See your result", again:"Play again", other:"Choose another level", visit:"Visit the digital collection",
      share:"Share my result", copied:"Text and link copied.", level:"Level",
      net:"The School of Salamanca as a global network", netp:"The School was never just one place. Its knowledge was taught, printed, read and developed further between Europe, the Americas and Asia. The map shows every place in the quiz; the places from your round are highlighted.",
@@ -328,7 +417,7 @@ const UI = {
 
 const ROMAN=["I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const EUROPE = new Set(["salamanca","valladolid","madrid","cuenca","sevilla","evora","coimbra","lyon","antwerpen","leiden","frankfurt","london"]);
-let lang = (navigator.language||"de").toLowerCase().startsWith("de") ? "de" : "en";
+const NAVL=(navigator.language||"de").toLowerCase(); let lang = NAVL.startsWith("de") ? "de" : NAVL.startsWith("es") ? "es" : "en";
 let state = {screen:"intro"};
 const app = document.getElementById("app");
 
@@ -363,8 +452,8 @@ function mapSVG(view, places, showLabels){
 function header(){
   const t=UI[lang];
   return `<header class="top"><a class="brand" href="https://www.salamanca.school" target="_blank" rel="noopener">${t.brand}</a>
-  <div class="lang" role="group" aria-label="Sprache / Language">
-   <button data-lang="de" aria-pressed="${lang==="de"}">DE</button><button data-lang="en" aria-pressed="${lang==="en"}">EN</button></div></header>`;
+  <div class="lang" role="group" aria-label="Sprache / Language / Idioma">
+   <button data-lang="de" aria-pressed="${lang==="de"}">DE</button><button data-lang="en" aria-pressed="${lang==="en"}">EN</button><button data-lang="es" aria-pressed="${lang==="es"}">ES</button></div></header>`;
 }
 function footer(){return `<footer>${UI[lang].foot}</footer>`;}
 function scoreOf(){return state.answers.filter(a=>a===0).length;}
@@ -391,8 +480,9 @@ function render(){
       const map=`<div class="mapwrap">${mapSVG(view,[{id:Q.place, st:"ok"}],true)}</div>`;
       const src=Q.src?`<p class="src">${t.src} <a href="${SRC(Q.src[0])}" target="_blank" rel="noopener">${Q.src[1]}</a></p>`:"";
       const lit=Q.lit?`<p class="lit">${t.read} ${Q.lit}</p>`:"";
+      const dict=Q.dict?`<p class="src dict"><a href="https://id.salamanca.school/lemmata/${Q.dict[0]}" target="_blank" rel="noopener">${t.dict} ${Q.dict[1]}</a></p>`:"";
       const more=Q.more?`<p class="src more"><a href="${Q.more}" target="_blank" rel="noopener">${t.more}</a></p>`:"";
-      fb=`<div class="feedback ${right?"ok":"no"} fade"><h3>${right?t.ok:t.no+" "+L.o[0]}</h3><p>${L.e}</p>${map}${src}${more}${lit}</div>
+      fb=`<div class="feedback ${right?"ok":"no"} fade"><h3>${right?t.ok:t.no+" "+L.o[0]}</h3><p>${L.e}</p>${map}${src}${dict}${more}${lit}</div>
         <button class="btn" id="next">${state.i<QS.length-1?t.next:t.finish}</button>`;
     }
     body=`<section class="fade" aria-label="${t.q} ${state.i+1} ${t.of} ${QS.length}">
